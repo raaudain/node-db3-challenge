@@ -2,6 +2,7 @@ const express = require('express');
 
 const Schemes = require('./scheme-model.js');
 
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -103,6 +104,7 @@ router.delete('/:id', (req, res) => {
 
   Schemes.remove(id)
   .then(deleted => {
+    console.log(req.body)
     if (deleted) {
       res.json({ removed: deleted });
     } else {
