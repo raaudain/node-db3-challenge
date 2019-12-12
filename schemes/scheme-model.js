@@ -44,7 +44,17 @@ function update(changes, id){
 }
 
 function remove(id){
+
+    
+    const gone = findById(id)
+        .then(item => {
+            return item;
+        })
+
     return db("schemes")
-    .where({id})
-    .del()
+        .where({id})
+        .del()
+        .then(() => {
+            return gone;
+        })   
 }
